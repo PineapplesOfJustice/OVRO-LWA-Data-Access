@@ -1,0 +1,443 @@
+/* Font */
+
+@font-face {
+    font-family: "Kanit";
+    src: url("Assets/Fonts/Kanit/Kanit.ttf") format("truetype");
+}
+
+
+/* Variable Declaration */
+
+:root {
+	--carousel-slider-height: 200px;
+	--carousel-slider-width: 7px;
+	--carousel-image-size-adjust: calc(var(--carousel-slider-height) + 40vmin);
+}
+
+
+/* Standard CSS Styling */
+
+html {
+    background-color: black;
+    height: 100%;
+}
+
+body {
+	/*background: radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)),
+		url("Assets/Images/Background/Nebula Texture.jpg");*/
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+		url("Assets/Images/Background/Nebula Texture.jpg");
+    background-repeat: repeat;
+	overflow-x: hidden;
+	margin: 0;
+    min-width: 0;
+    min-height: 100%;
+}
+
+h1, h2, p, a, li, button {
+	color: white; 
+	font-family: Kanit, sans-serif;
+	word-wrap: break-word;
+    text-shadow: -2px 2px 1px black; 
+}
+
+h1 {
+	color: white;
+	font-family: Kanit, sans-serif;
+	font-size: calc(10px + 4vw);
+	font-weight: bold;
+	text-align: center;
+    
+    padding: 5vmin 0;
+    margin: 0;
+}
+
+h2 {
+	color: white;
+	font-family: Kanit, sans-serif;
+	font-size: calc(13.5px + 1.5vw);
+    display: block;
+}
+
+p {
+	color: white;
+	font-family: Kanit, sans-serif;
+	font-size: calc(10px + 1vw);
+    display: inline;
+    
+    /*min-width: 150px;*/
+}
+
+a {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul li {
+	color: white;
+	font-family: Kanit, sans-serif;
+	font-size: calc(13px + 0.4vw);
+}
+
+.flexContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+    min-width: 300px;
+    
+    margin-top: 0;
+    
+	/*margin: 1vw;*/
+}
+
+#explanationContainer {
+    width: 60vw;
+    text-align: left;
+    margin-bottom: 12vmin;
+}
+
+
+/* Input Boxes */
+
+.inputContainer {
+    flex: 1;
+    padding: 0 10vmin;
+	min-width: 250px;
+    margin-bottom: calc(20px + 7vh);
+    overflow: hidden;
+}
+
+input[type=number] {    
+    width: calc(18px + 12%);
+    height: calc(10px + 1vw);
+    -moz-appearance: textfield;
+    
+    color: white;
+	font-family: Kanit, sans-serif;
+	font-size: calc(10px + 1vw);
+    background: none;
+    text-align: center;
+    
+    margin: calc(4px + 1vmin);
+    padding: 5px 5px;
+    border: none;
+    border-bottom: solid 3px rgba(0, 0, 170, 0.7);
+    
+    -webkit-transition: 0.7s;
+    transition: background 0.7s, border-bottom 0.7s;
+}
+
+input[type=number]:hover, input[type=number]:focus {
+    border-bottom: solid 3px rgba(0, 100, 255, 1);
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+button {    
+    width: 120px;
+    display: inline;
+    
+    color: white;
+	font-family: Kanit, sans-serif;
+	font-size: calc(10px + 1vw);
+    background: black;
+    text-align: center;
+
+    border: solid 1px white;
+    border-radius: 5vw;
+    cursor: pointer;
+    margin-right: 1vw;
+    
+    -webkit-transition: 0.7s;
+    transition: color 0.7s, border-radius 0.7s;
+}
+
+button:hover {
+    color: red;
+    border-radius: 0;
+}
+
+#abortUpdateButton {
+    position: relative;
+    left: 25%;
+    opacity: 0;
+    pointer-events: none;
+    
+    -webkit-transition: 0.7s;
+    transition:  color 0.7s, border-radius 0.7s, left 0.7s, opacity 0.7s;
+}
+
+
+/* Select Input */
+
+.selectDiv {
+    position: relative;
+    display: inline;
+    float: left;
+    
+    width: calc(45px + 24%);
+    height: calc(30px + 1vw);
+    cursor: pointer;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.selectDiv:after {
+    content: '<>';
+    font: calc(12px + 0.6vw) monospace;
+    color: white;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 5%;
+
+    text-shadow: none;
+
+    top: calc(10px + 0.2vw);
+    padding: 0 0 5px;
+    border-bottom: 1px solid #999;
+
+    position: absolute;
+    pointer-events: none;
+    
+    -webkit-transition: 0.7s;
+    transition: color 0.7s;
+}
+
+.selectDiv select {
+    width: 100%;
+    height: calc(30px + 1vw);
+    min-width: 0;
+    
+    color: white;
+	font-family: Kanit, sans-serif;
+	font-size: calc(10px + 1vw);
+    -ms-word-break: normal;
+    word-break: normal;
+    /*text-align: center;*/
+    
+    background: black;
+    background-image: none;
+    margin: 5px 0px;
+    padding: 0px 20px;
+    border: 1px solid #cccccc;
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.selectDiv:hover:after {
+    color: red;
+}
+
+.selectDiv select option:disabled {
+    color: red;
+}
+
+#stepAmountInput {
+    float: left;
+    margin-right: 3vw;
+}
+
+
+/* Warning Box */
+
+.flexContainer .carouselContainer .warningContainer {
+    position: relative;
+}
+
+.warningLabel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    color: white;
+    text-shadow: -1.5px 1.5px 1px black;
+    font-family: Kanit, sans-serif;
+	font-size: calc(10px + 1vw);
+    opacity: 1;
+    
+    -webkit-transform: translate(-50%, -50%) scale(1) rotate(0);
+    /*-webkit-transform-origin: 50% 50%;*/
+    -webkit-transition: 0.7s;
+    
+    transform: translate(-50%, -50%) scale(1) rotate(0);
+    /*transform-origin: 50% 50%;*/
+    transition: transform 0.7s;
+}
+
+.warningLabel .warningHeader {
+    color: red;
+    text-shadow: -2px 2px 1px black;
+    font-family: Kanit, sans-serif;
+	font-size: calc(15px + 2vw);
+}
+
+
+/* Visible and Radio Sun Images (Container) */
+
+.flexContainer .carouselContainer {
+	flex: 1;
+    position: relative;
+    
+	min-width: 250px;
+    /*max-width: calc(50vw - 2px);
+    border: solid 1px red;*/
+	
+    margin-left: 7vw;
+    margin-right: 7vw;
+    margin-bottom: calc(20px + 7vh);
+}
+
+
+/* Visible and Radio Sun Images (Filter) */
+
+.flexContainer .carouselContainer .carouselFilter {
+    display: none;
+}
+
+
+/* Visible and Radio Sun Images (Image) */
+
+.flexContainer .carouselContainer  .warningContainer img {
+    width: 100%;
+	height: auto;
+	max-width: var(--carousel-image-size-adjust);
+    
+    cursor: pointer;
+    pointer-events: none;
+    
+    /*-webkit-transition: 0.7s;
+    transition: transform 0.7s;*/
+}
+
+/*.flexContainer .carouselContainer  .warningContainer:hover img {
+    transform: scale(0);
+}*/
+
+
+
+/* Visible and Radio Sun Images (Vertical Slider) */
+
+.verticalSliderWrapper {
+	width: 0;
+	height: 0;
+	padding: 0;
+	/*transform: translate(calc(3px + 0.8vw), calc(var(--carousel-slider-width) - var(--carousel-image-size-adjust)/2 - var(--carousel-slider-height)));*/
+    
+	/*border: solid 2px black;*/
+    float: right;
+	display: inline;
+}
+
+.verticalSliderWrapper input {
+	width: var(--carousel-slider-height);
+	height: var(--carousel-slider-width);
+	background: #d3d3d3;
+	-webkit-appearance: none;
+	appearance: none;
+	outline: none;
+	opacity: 0.7;
+	margin: 0;
+    /*z-index: 1;*/
+    
+	-webkit-transform: rotate(-90deg);
+	-webkit-transform-origin: calc(var(--carousel-slider-height)/2) calc(var(--carousel-slider-height)/2);
+	-webkit-transition: 0.5s;
+    
+	transform: rotate(-90deg);
+	transform-origin: calc(var(--carousel-slider-height)/2) calc(var(--carousel-slider-height)/2);
+	transition: opacity 0.5s;
+    
+    cursor: pointer;
+    pointer-events: none;
+}
+
+/*.verticalSliderWrapper input:hover {
+	opacity: 1;
+}*/
+
+.verticalSliderWrapper input::-webkit-slider-thumb {
+	width: calc(var(--carousel-slider-width)*10/7);
+	height: calc(var(--carousel-slider-width)*7/2);
+	background: white;
+    
+	-webkit-appearance: none;
+	-webkit-transition: 0.7s;
+	appearance: none;
+	transition: all 0.7s;
+	cursor: pointer;
+}
+
+.verticalSliderWrapper input:hover::-webkit-slider-thumb {
+	background: orange;
+}
+
+.verticalSliderWrapper input:active::-webkit-slider-thumb {
+	background: red;
+}
+
+.verticalSliderWrapper input::-moz-range-thumb {
+	width: calc(var(--carousel-slider-width) * 10/7);
+	height: calc(var(--carousel-slider-width) * 7/2);
+	background: white;
+	-webkit-transition: 0.7s;
+	transition: background 0.7s;
+	cursor: pointer;
+}
+
+.verticalSliderWrapper input:hover::-moz-range-thumb {
+	background: orange;
+}
+
+.verticalSliderWrapper input:active::-moz-range-thumb {
+	background: red;
+}
+
+.verticalSliderWrapper input::-ms-thumb {
+	width: 30px;
+	height: 30px;
+	background: green;
+	-webkit-transition: 0.7s;
+	transition: background 0.7s;
+	cursor: pointer;
+}
+
+.verticalSliderWrapper input::-ms-thumb:hover {
+	background: orange;
+}
+
+.verticalSliderWrapper input::-ms-thumb:active {
+	background: red;
+}
+
+
+/* Visible and Radio Sun Images (Date) */
+
+.carouselDate {
+	/*transform: translate(0, calc(20px - var(--carousel-slider-height)));*/
+    text-align: center;
+    font-size: calc(10px + 1.5vw);
+}
+
+
+/* Last Update Text */
+
+#lastUpdateText {
+    text-align: right;
+    padding: 5vmin;
+    margin: 0;
+    display: block;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OVRO-LWA: Image Access</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="shortcut icon" href="Assets/Images/Favicon/Caltech (alt).png" type="image/x-icon"/>
+        
+        <meta charset="UTF-8">
+        <meta name="description" content="Front-end tool to access and view Caltech solar images (radio).">
+        <meta name="keywords" content="Astronomy, Caltech, radioastronomy, Hallinan Group, LWA, Owen Valley Observatory">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 id="websiteTitle">OVRO-LWA: Image Access</h1>
+        <center>
+            <div id="explanationContainer">
+                <p>This is a basic tool to <i>access</i> and <i>view</i> OVRO-LWA Solar Images. Without it, the public database can be accessed <a href="http://www.tauceti.caltech.edu/marinanderson/solar/hourly/" target="_blank">here</a>.</p>
+            </div>
+        </center>
+        <div class="flexContainer" id="websiteImagery">
+            <div class="inputContainer">
+                <p>To: <br>
+                    <input type="number" inputmode="decimal" pattern="\d*" min="2019" step="1" placeholder="yyyy" id="toYearInput" oninput="limitInput('toYear', 4)"/> -
+                    <input type="number" inputmode="decimal" pattern="\d*" step="1" placeholder="mm" id="toMonthInput" oninput="limitInput('toMonth', 2)"/> -
+                    <input type="number" inputmode="decimal" pattern="\d*" step="1" placeholder="dd" id="toDayInput" oninput="limitInput('toDay', 2)"/><br>
+                    <input type="number" inputmode="decimal" pattern="\d*" step="1" placeholder="hh" id="toHourInput" oninput="limitInput('toHour', 2)"/> :
+                    <input type="number" inputmode="decimal" pattern="\d*" step="1" placeholder="mm" value="0" id="toMinuteInput" oninput="limitInput('toMinute', 2)"/> :00 UTC
+                </p><br><br><br>
+                <p>From: <br>
+                    <input type="number" inputmode="decimal" pattern="\d*" min="2019" step="1" placeholder="yyyy" id="fromYearInput" oninput="limitInput('fromYear', 4)"/> -
+                    <input type="number" inputmode="decimal" pattern="\d*" step="1" placeholder="mm" id="fromMonthInput" oninput="limitInput('fromMonth', 2)"/> -
+                    <input type="number" inputmode="decimal" pattern="\d*" step="1" placeholder="dd" id="fromDayInput" oninput="limitInput('fromDay', 2)"/><br>
+                    <input type="number" inputmode="decimal" pattern="\d*" step="1" placeholder="hh" id="fromHourInput" oninput="limitInput('fromHour', 2)"/> :
+                    <input type="number" inputmode="decimal" pattern="\d*" step="1" placeholder="mm" value="0" id="fromMinuteInput" oninput="limitInput('fromMinute', 2)"/> :00 UTC
+                </p><br><br><br>
+                <p>Step Size: <br>
+                    <input type="number" inputmode="decimal" pattern="\d*" min="1" step="1" value="1" placeholder="##" id="stepAmountInput" oninput="limitInput('stepAmount', 4)"/>
+                    <span class="selectDiv">
+                        <select id="stepTypeInput">
+                            <option disabled>Select one:</option>
+                            <option value='minute'>Minute</option>
+                            <option selected value='hour'>Hour</option>
+                            <option value='day'>Day</option>
+                            <option value='month'>Month</option>
+                            <option value='year'>Year</option>
+                        </select>
+                    </span>
+                </p><br><br><br><br><br><br>
+                <button onclick="updateCarouselArrays();" id="submitUpdateButton">Submit</button>
+                <button onclick="cancelCarouselArraysUpdate();" id="abortUpdateButton">Abort</button>
+            </div>
+            <div class="carouselContainer">
+                <img class="carouselFilter" id="radioSunCarouselFilter" alt="Radio Sun Carousel Filter" onerror="filterCarousel('radio');" onload="continueCarouselFilter('radio');"/>
+                <div class="warningContainer">
+                    <center>
+                        <img id="radioSunCarousel" alt="OVRO-LWA Images" onerror="reportImage('radio');" onload="relocateCarouselSlider('radio');"/>
+                    </center>
+                    <div class="warningLabel" id="radioSunWarningLabel"><span class="warningHeader">WARNING:</span> This image array may potentially trigger seizures for people with photosensitive epilepsy. Viewer discretion is advised.</div>    
+                </div><br>
+                <div class="verticalSliderWrapper" id="radioSunCarouselSliderContainer">
+                    <input type="range" min="0" max="47" value="0" step="1" tabindex="-1" id="radioSunCarouselSlider">
+                </div><br>
+                <h2 id="radioSunDate" class="carouselDate"></h2>
+            </div>
+        </div>
+
+        <p id="lastUpdateText">Last update: August 9, 2019</p>
+
+        <script src="function.js"></script>
+    </body>
+</html>
