@@ -266,7 +266,7 @@ select::-ms-expand {
     color: white;
     text-shadow: -1.5px 1.5px 1px black;
     font-family: Kanit, sans-serif;
-	font-size: calc(10px + 1vw);
+	font-size: calc(10px + 0.85vw);
     opacity: 1;
     
     -webkit-transform: translate(-50%, -50%) scale(1) rotate(0);
