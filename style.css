@@ -363,6 +363,7 @@ select::-ms-expand {
     
     cursor: pointer;
     pointer-events: none;
+    touch-action: none;
 }
 
 /*.verticalSliderWrapper input:hover {
